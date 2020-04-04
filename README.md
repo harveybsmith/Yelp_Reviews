@@ -28,12 +28,13 @@ This facetgrid shows histograms for each "star" ordinal category.  The y axis re
 
 Next a simple countplot shows that the majority of the Yelp listings in our dataset have high ratings of 4 or 5 stars
 
-Doing an aggregation groupby on our dataset by 'stars' gives us some interesting observations:
+Doing an aggregation mean() on a groupby of our dataset by 'stars' gives us some interesting observations:
 
-	cool	         useful		funny	        text legnth
-stars				
-1	`0.576769	1.604806	1.056075	826.515354
-2	`0.719525	1.563107	0.875944	842.256742
-3	`0.788501	1.306639	0.694730	758.498289
-4	`0.954623	1.395916	0.670448	712.923142
-5	`0.944261	1.381780	0.608631	624.999101
+1.  The reviews marked as 'cool', while not frequently used, have a strong correlation with more stars
+2.  Reviews marked as 'useful' by others, tend to correlate with lower stars
+3.  Reviews marked as funny strongly correlates with with lower stars. The funnier, the poorer the rating
+4.  Longer tenxt length correlated with lower rating.
+
+![](/corr_heatmap.png)
+
+

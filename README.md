@@ -21,3 +21,19 @@ I created a column called "Text Length" which created numeric values representin
 ## EDA
 
 ![](/text_length_fg.png)
+
+This facetgrid shows histograms for each "star" ordinal category.  The y axis representing the counts and the x axis representing the text lengths, organized into 8 bins.  As one can notice, reviews with higher ratings have more reviews but the majority of the reivew lengths are short.
+
+![](/stars_countplot.png)
+
+Next a simple countplot shows that the majority of the Yelp listings in our dataset have high ratings of 4 or 5 stars
+
+Doing an aggregation groupby on our dataset by 'stars' gives us some interesting observations:
+
+	cool	useful	funny	text legnth
+stars				
+1	0.576769	1.604806	1.056075	826.515354
+2	0.719525	1.563107	0.875944	842.256742
+3	0.788501	1.306639	0.694730	758.498289
+4	0.954623	1.395916	0.670448	712.923142
+5	0.944261	1.381780	0.608631	624.999101

@@ -35,6 +35,14 @@ Doing an aggregation mean() on a groupby of our dataset by 'stars' gives us some
 3.  Reviews marked as funny strongly correlates with with lower stars. The funnier, the poorer the rating
 4.  Longer tenxt length correlated with lower rating.
 
+           cool    useful     funny  text legnth
+stars                                           
+1      0.576769  1.604806  1.056075   826.515354
+2      0.719525  1.563107  0.875944   842.256742
+3      0.788501  1.306639  0.694730   758.498289
+4      0.954623  1.395916  0.670448   712.923142
+5      0.944261  1.381780  0.608631   624.999101
+
 ![](/corr_heatmap.png)
 
 

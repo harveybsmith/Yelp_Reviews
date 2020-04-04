@@ -20,4 +20,4 @@ I created a column called "Text Length" which created numeric values representin
 
 ## EDA
 
-![](text_length_df.png)
+![](/text_length_fg.png)

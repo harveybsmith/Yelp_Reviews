@@ -46,4 +46,49 @@ Observiing the correlations between the individual features to each other using 
 
 ![](/corr_heatmap.png)
 
+## NLP Classification Task
 
+To simplify things I only looked at ratings with a 1 star or 5 stars.  So our model will tell us if a listing has with a very poor review or a very good review.  In that was it is more binary
+
+* First we vectorizer our text data with CountVectorizer, where each each listing is a row, and every unique word in all the reivews is transformed into a column, and each value is either a 1 if the word appears in the listing, or 0 if not. This create a very sparse matrix. We call this a 'Bag of Words'.  
+ * Then we perform a Multinomial Naive Bayes on this matrix.  Multinomial is better at dealing with sparse data.  It doesnt need to have each word as dependent as each other word as is "Naively" assumes a correlation between them
+ 
+               precision    recall  f1-score   support
+
+           1       0.88      0.70      0.78       228
+           5       0.93      0.98      0.96       998
+
+    accuracy                           0.93      1226
+   macro avg       0.91      0.84      0.87      1226
+weighted avg       0.92      0.93      0.92      1226
+
+The results are good.  0.92 accuracy.  
+
+# Using TDIDF
+
+Then I try using TDIDF, Term Frequency Inverse Document Frequecy.  This makes the sparse matrix of bag of words less sparse and gives a continuous value for each word from 0 to 1.  Each word is now taken as the proportion of words in the document (review), the Term Frequency.  The second term is the Inverse Document Frequency (IDF), computed as the logarithm of the number of the documents in the corpus divided by the number of documents where the specific term appears.
+
+Example:
+
+Consider a document containing 100 words wherein the word cat appears 3 times.
+
+The term frequency (i.e., tf) for cat is then (3 / 100) = 0.03. Now, assume we have 10 million documents and the word cat appears in one thousand of these. Then, the inverse document frequency (i.e., idf) is calculated as log(10,000,000 / 1,000) = 4. Thus, the Tf-idf weight is the product of these quantities: 0.03 * 4 = 0.12.
+
+We create a simple Pipeline using 
+
+`pipeline = Pipeline([
+    ('bow', CountVectorizer()),
+    ('tdidf', TfidfTransformer()),
+    ('classifier', MultinomialNB()),
+])`
+
+When we fit the pipeline and then use predict to create predictions for our test data we get the folowing results
+
+              precision    recall  f1-score   support
+
+           1       0.00      0.00      0.00         0
+           5       1.00      0.82      0.90       818
+
+    accuracy                           0.82       818
+   macro avg       0.50      0.41      0.45       818
+weighted avg       1.00      0.82      0.90       818

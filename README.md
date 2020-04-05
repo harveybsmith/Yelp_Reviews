@@ -84,12 +84,8 @@ We create a simple Pipeline using
 
 When we fit the pipeline and then use predict to create predictions for our test data we get the folowing results
 
-              precision    recall  f1-score   support
+                  precision    recall  f1-score   support
+ `weighted avg       1.00      0.82      0.90       818
 
-           1       0.00      0.00      0.00         0
-           5       1.00      0.82      0.90       818
-
-    accuracy                           0.82       818
-`   macro avg       0.50      0.41      0.45       818
-weighted avg       1.00      0.82      0.90       818`
-
+`
+Supringlingly, we get worse results with TDIDF.  This is unexpected

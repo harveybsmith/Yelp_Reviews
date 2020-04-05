@@ -90,5 +90,6 @@ When we fit the pipeline and then use predict to create predictions for our test
            5       1.00      0.82      0.90       818
 
     accuracy                           0.82       818
-   macro avg       0.50      0.41      0.45       818
+`  macro avg       0.50      0.41      0.45       818
 weighted avg       1.00      0.82      0.90       818
+
